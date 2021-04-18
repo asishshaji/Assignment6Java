@@ -6,25 +6,28 @@ public class Employee {
     double salary;
 
     Employee(double salary) {
-        empNo += 1;
         this.salary = salary;
+        empNo += 1;
         totalSalary += salary;
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int numOfEmp;
+        Employee emp = null;
 
         System.out.println("Enter number of employees ");
         numOfEmp = scanner.nextInt();
-        Employee emp = null;
+
         for (int i = 0; i < numOfEmp; i++) {
             double salary;
             System.out.println("Enter salary");
             salary = scanner.nextDouble();
             emp = new Employee(salary);
         }
-        emp.displayData();
+        if (emp != null) {
+            emp.displayData();
+        }
     }
 
     void displayData() {
