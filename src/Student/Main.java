@@ -5,8 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        CollegeStudent[] collegeStudents = new CollegeStudent[2];
-        SchoolStudent[] schoolStudents = new SchoolStudent[3];
+        Student[] students = new Student[5];
         Main main = new Main();
         int rollNo;
         double percentage;
@@ -26,11 +25,11 @@ public class Main {
             System.out.println("Enter semester");
             semester = scanner.next().charAt(0);
 
-            collegeStudents[i] = new CollegeStudent(rollNo, percentage, semester);
+            students[i] = new CollegeStudent(rollNo, percentage, semester);
         }
 
         System.out.println("Enter details for school student");
-        for (int i = 0; i < 3; i++) {
+        for (int i = 2; i < 5; i++) {
             System.out.println("Enter roll no");
             rollNo = scanner.nextInt();
 
@@ -40,48 +39,32 @@ public class Main {
             System.out.println("Enter class name");
             className = scanner.next();
 
-            schoolStudents[i] = new SchoolStudent(rollNo, percentage, className);
+            students[i] = new SchoolStudent(rollNo, percentage, className);
         }
 
-
-        for (CollegeStudent stu : collegeStudents) {
+        for (Student stu : students) {
             stu.show();
         }
 
-        for (SchoolStudent stu : schoolStudents) {
-            stu.show();
-        }
 
         System.out.println("Enter search key");
         searchKey = scanner.nextInt();
 
-        for (CollegeStudent stu : collegeStudents)
-            main.searchMsg(stu, searchKey, "User is a college student");
-
-
-        for (SchoolStudent stu : schoolStudents)
-            main.searchMsg(stu, searchKey, "User is a school student");
-
-
-        for (CollegeStudent stu : collegeStudents) {
-            if (stu.percentage > 75)
-                countAGrade++;
+        for (Student stu : students) {
+            if (stu.rollNo == searchKey) {
+                if (stu instanceof SchoolStudent)
+                    System.out.println("School student");
+                else System.out.println("College student");
+            }
         }
 
-        for (SchoolStudent stu : schoolStudents) {
-            if (stu.percentage > 75)
-                countAGrade++;
+        for (Student student : students) {
+            if (student.percentage > 75) countAGrade++;
         }
+
 
         System.out.println("Number of students with grade A : " + countAGrade);
 
     }
 
-    public void searchMsg(Student stu, int searchKey, String message) {
-
-        if (stu.rollNo == searchKey) {
-            System.out.println("User is a college student");
-            return;
-        }
-    }
 }
