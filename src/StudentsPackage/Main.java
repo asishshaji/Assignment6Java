@@ -1,4 +1,4 @@
-package Student;
+package StudentsPackage;
 
 import java.util.Scanner;
 
@@ -6,7 +6,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Student[] students = new Student[5];
-        Main main = new Main();
         int rollNo;
         double percentage;
         char semester;
@@ -51,15 +50,13 @@ public class Main {
         searchKey = scanner.nextInt();
 
         for (Student stu : students) {
-            if (stu.rollNo == searchKey) {
+            if (stu.getRollNo() == searchKey) {
                 if (stu instanceof SchoolStudent)
                     System.out.println("School student");
                 else System.out.println("College student");
             }
-        }
+            if (stu.getPercentage() > 75) countAGrade++;
 
-        for (Student student : students) {
-            if (student.percentage > 75) countAGrade++;
         }
 
 

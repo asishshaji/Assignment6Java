@@ -1,4 +1,4 @@
-package Student;
+package StudentsPackage;
 
 public class CollegeStudent extends Student {
     char semester;
@@ -16,7 +16,6 @@ public class CollegeStudent extends Student {
     }
 
 
-    @Override
     void show() {
         super.show();
         System.out.println("Semester : " + semester);

@@ -1,4 +1,4 @@
-package Student;
+package StudentsPackage;
 
 public class SchoolStudent extends Student {
     String className;
@@ -15,7 +15,6 @@ public class SchoolStudent extends Student {
         this.className = className;
     }
 
-    @Override
     void show() {
         super.show();
         System.out.println("Class : " + className);
